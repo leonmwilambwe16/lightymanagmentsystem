@@ -1,0 +1,95 @@
+.table-recent-conatainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .nav-table {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+
+    button {
+      width: 100px;
+      border-radius: 7px;
+      border: none;
+      background: rgb(209, 208, 208);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background: rgb(27, 117, 235);
+        color: white;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .table-data {
+    padding: 0 25px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgb(206, 206, 206);
+        text-align: left;
+      }
+
+      th {
+        background-color: white;
+        font-weight: bold;
+      }
+
+      tr:nth-child(even) {
+        background-color: white;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    // Badge styling
+    .status-badge,
+    .priority-badge {
+      padding: 4px 8px;
+      border-radius: 5px;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-block;
+      text-transform: capitalize;
+    }
+
+    // STATUS COLORS
+    .status-badge.pending {
+      background-color: #f7b500; // Yellow
+    }
+
+    .status-badge.completed {
+      background-color: #28a745; // Green
+    }
+
+    .status-badge.inprogress {
+      background-color: #007bff; // Blue
+    }
+
+    // PRIORITY COLORS
+    .priority-badge.high {
+      background-color: #dc3545; // Red
+    }
+
+    .priority-badge.medium {
+      background-color: #fd7e14; // Orange
+    }
+
+    .priority-badge.low {
+      background-color: #20c997; // Teal/Green
+    }
+  }
+}

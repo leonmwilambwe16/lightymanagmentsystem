@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 20px;
   .block1{
    background: white;
    border-radius: 10px;
@@ -9,10 +10,24 @@
              -20px -20px 60px #ffffff;
   }
   .block2{
-   background: orange;
+   background-color: white;
    display: flex;
+   gap: 10px;
+    height: 100%;
+    flex: 1;
+    border-radius: 10px;
+   box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
   }
   .block3{
-  background: green;
+  background: white;
+  }
+  @media (max-width:768px) {
+    .block2 {
+      display: flex;
+      flex-direction: column;
+    }
+
+
   }
 }
