@@ -19,7 +19,7 @@ const Sidebar = () => {
       <nav className="sidebar__nav">
         <ul>
           <li><Link className="menu-list" to="/dashboard"><LuLayoutDashboard /> <span>Dashboard</span></Link></li>
-          <li><Link className="menu-list" to="/dashboard/profile"><BiTask />  <span>Manage Task</span></Link></li>
+          <li><Link className="menu-list" to="/dashboard/manager"><BiTask />  <span>Manage Task</span></Link></li>
            <li><Link className="menu-list" to="/dashboard/profile"><FaRegPlusSquare /> <span>Create Task</span></Link></li>
             <li><Link className="menu-list" to="/dashboard/profile"><FaUserGroup />  <span>Team Members</span></Link></li>
         </ul>

@@ -1,0 +1,109 @@
+.container-task-create{
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  font-size: 15px;
+ 
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+   input{
+    
+      padding: 10px 10px;
+         border: 1px solid rgb(209, 207, 207);
+         cursor: pointer;
+         
+   
+   }
+    
+    textarea{
+       padding: 20px 10px;
+         border: 1px solid rgb(209, 207, 207);
+         cursor: pointer;
+    }
+
+    .priority-section{
+      display: flex;
+      gap: 10px;
+      .filed-section{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 2px;
+        input{
+         padding: 5px 10px;
+         border: 1px solid rgb(209, 207, 207);
+         cursor: pointer;
+        }
+        select{
+          padding: 5px 10px;
+         border: 1px solid rgb(209, 207, 207);
+         cursor: pointer;
+        }
+        button{
+          padding: 6.5px 10px;
+          background: rgb(233, 230, 230);
+          border: none;
+          border-radius: 7px;
+          cursor: pointer;
+          &:hover{
+            background: rgb(42, 125, 233);
+            color: white;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+    .Todo-list{
+      display: flex;
+      flex-direction: column;
+     
+      gap: 5px;
+      width: 100%;
+     .checklist{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .input-check{
+        display: flex;
+        gap: 10px;
+          input{
+      width: 100%;
+       padding: 3px 10px;
+        border: 1px solid rgb(209, 207, 207);
+      }
+      button{
+        width: 70px;
+        border: none;
+         border-radius: 7px;
+         margin: 10px;
+         background: rgb(233, 230, 230);
+          cursor: pointer;
+          &:hover{
+            background: rgb(42, 125, 233);
+            color: white;
+            transition: 0.3s;
+          }
+      }
+      }
+    
+     }
+    }
+    button{
+      width: 100%;
+      padding: 7px 0px;
+      border: none;
+      background: rgb(233, 230, 230);
+      border-radius: 7px;
+      cursor: pointer;
+        &:hover{
+            background: rgb(42, 125, 233);
+            color: white;
+            transition: 0.3s;
+          }
+    }
+  }
+}

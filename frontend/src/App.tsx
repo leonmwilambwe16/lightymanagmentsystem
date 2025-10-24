@@ -4,11 +4,13 @@ import HomePage from "./Pages/HomePage";
 import Dashboard from "./Pages/Dashboard";
 import MainLayout from "./Layout/MainLayout";
 import ProtectedLayout from "./Layout/ProtectedLayout";
+import CreateTasks from "./Pages/CreateTasks";
+import ManagmentTasks from "./Pages/ManagmentTasks";
 
 function App() {
   return (
     <Routes>
-      {/* Public routes with Navbar */}
+   
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -21,13 +23,16 @@ function App() {
         />
       </Route>
 
-      {/* Protected routes with Sidebar only */}
+  
       <Route path="/dashboard" element={<ProtectedLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path="profile" element={<div>Profile Page</div>} />
+        <Route path="manager" element={<ManagmentTasks/>} />
+        <Route path="profile" element={<CreateTasks/>} />
       </Route>
     </Routes>
   );
 }
 
 export default App;
+
+
