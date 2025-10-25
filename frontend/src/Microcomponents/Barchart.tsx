@@ -9,15 +9,16 @@ import {
   Cell,
 } from 'recharts';
 import '../Styles/Micocompnent.styles/Barchart.scss';
+import { useTasks } from '../Context/TaskContext';
 
 const Barchart: React.FC = () => {
-  const data = [
-    { name: 'Total', tasks: 10, color: '#4B9EFF' },
-    { name: 'Pending', tasks: 2, color: '#FFB347' },
-    { name: 'In Progress', tasks: 3, color: '#FFD700' },
-    { name: 'Completed', tasks: 5, color: '#9ACD32' },
+  const {tasks}= useTasks()
+ const data = [
+    { name: 'Total', tasks: tasks.length, color: '#4B9EFF' },
+    { name: 'Low', tasks: tasks.filter(t => t.priority === 'Low').length, color: '#FFB347' },
+    { name: 'Medium', tasks: tasks.filter(t => t.priority === 'Medium').length, color: '#FFD700' },
+    { name: 'High', tasks: tasks.filter(t => t.priority === 'High').length, color: '#9ACD32' },
   ];
-
   return (
     <div className="bar-chart-wrapper">
       <h3 className="chart-title">Task Overview</h3>

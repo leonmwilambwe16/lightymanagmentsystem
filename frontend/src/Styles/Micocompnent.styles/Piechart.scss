@@ -1,11 +1,31 @@
+.chart-pie-container {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  .chart-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
-.pie-chart {
-  width: 75%;
-  height: 300px;
+  .recharts-responsive-container {
+    width: 100% !important;
+    height: 300px !important;
+  }
 }
 
-.chart-pie-container {
- flex: 1;
-  height: 300px
+@media (max-width: 768px) {
+  .chart-pie-container {
+    height: auto;
+
+    .recharts-responsive-container {
+      height: 250px !important;
+    }
+  }
 }

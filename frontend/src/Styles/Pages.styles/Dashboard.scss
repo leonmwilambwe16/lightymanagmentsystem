@@ -1,33 +1,49 @@
-.Dashbord-container{
+.Dashbord-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  .block1{
-   background: white;
-   border-radius: 10px;
-   box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
-  }
-  .block2{
-   background-color: white;
-   display: flex;
-   gap: 10px;
-    height: 100%;
-    flex: 1;
+
+  .block1 {
+    background: white;
     border-radius: 10px;
-   box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
   }
-  .block3{
-  background: white;
-  }
-  @media (max-width:768px) {
-    .block2 {
+
+  .block2 {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+
+    .pie-chart,
+    .periodchart {
+      flex: 1;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+  }
 
+  .block3 {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  }
 
+  @media (max-width: 768px) {
+    .block2 {
+      flex-direction: column;
+      padding: 10px;
+
+      .pie-chart,
+      .periodchart {
+        width: 100%;
+      }
+    }
   }
 }

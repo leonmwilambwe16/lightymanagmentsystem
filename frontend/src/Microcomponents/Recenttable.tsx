@@ -1,21 +1,12 @@
+// src/Microcomponents/Recenttable.tsx
 import React from 'react';
 import '../Styles/Micocompnent.styles/Recenttable.scss';
 import { GrLinkNext } from "react-icons/gr";
+import { useTasks } from '../Context/TaskContext';
 
-interface DataProps {
-  name: string;
-  status: string;
-  priority: string;
-  created: string;
-}
+const Recenttable: React.FC = () => {
+  const { tasks } = useTasks();
 
-const datas: DataProps[] = [
-  { name: "King", status: "Pending", priority: "High", created: new Date().toLocaleDateString() },
-  { name: "Alice", status: "Completed", priority: "Low", created: new Date().toLocaleDateString() },
-  { name: "John", status: "Inprogress", priority: "Medium", created: new Date().toLocaleDateString() },
-];
-
-const Recenttable = () => {
   return (
     <div className='table-recent-conatainer'>
       <div className="nav-table">
@@ -27,27 +18,23 @@ const Recenttable = () => {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Status</th>
+              <th>Title</th>
               <th>Priority</th>
-              <th>Created On</th>
+              <th>Due Date</th>
+              <th>Created</th>
             </tr>
           </thead>
           <tbody>
-            {datas.map((item, index) => (
+            {tasks.slice(-5).reverse().map((task, index) => (
               <tr key={index}>
-                <td>{item.name}</td>
+                <td>{task.taskTitle}</td>
                 <td>
-                  <span className={`status-badge ${item.status.toLowerCase()}`}>
-                    {item.status}
+                  <span className={`priority-badge ${task.priority.toLowerCase()}`}>
+                    {task.priority}
                   </span>
                 </td>
-                <td>
-                  <span className={`priority-badge ${item.priority.toLowerCase()}`}>
-                    {item.priority}
-                  </span>
-                </td>
-                <td>{item.created}</td>
+                <td>{task.dueDate || "—"}</td>
+                <td>{new Date().toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>

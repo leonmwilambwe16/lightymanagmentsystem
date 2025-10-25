@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { PiSpiral } from "react-icons/pi";
 import { FaUserCircle } from "react-icons/fa";
@@ -18,28 +17,43 @@ interface Task {
 
 const ManagmentTasks: React.FC = () => {
   const { tasks, updateTask, deleteTask } = useTasks();
+
   const [selectedTaskId, setSelectedTaskId] = useState<string | number | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
+  const [editDueDate, setEditDueDate] = useState("");
+  const [editPriority, setEditPriority] = useState<"High" | "Medium" | "Low">("Low");
 
+  // Select card
   const handleCardClick = (task: Task) => {
     setSelectedTaskId(selectedTaskId === task.id ? null : task.id);
   };
 
+  // Start editing
   const handleEditClick = (task: Task) => {
     setIsEditing(true);
     setEditTitle(task.taskTitle);
     setEditDescription(task.description);
+    setEditDueDate(task.dueDate || "");
+    setEditPriority(task.priority);
   };
 
+  // Save changes
   const handleUpdateSubmit = () => {
     if (selectedTaskId != null) {
-      updateTask(selectedTaskId, { taskTitle: editTitle, description: editDescription });
+      updateTask(selectedTaskId, {
+        taskTitle: editTitle,
+        description: editDescription,
+        dueDate: editDueDate,
+        priority: editPriority,
+      });
     }
     setIsEditing(false);
   };
 
+  // Delete task
   const handleDeleteClick = (taskId: string | number) => {
     deleteTask(taskId);
     setSelectedTaskId(null);
@@ -55,7 +69,6 @@ const ManagmentTasks: React.FC = () => {
           const doneCount = task.todoList.length > 0 ? Math.floor(task.todoList.length / 2) : 0;
           const totalCount = task.todoList.length || 1;
           const progress = (doneCount / totalCount) * 100;
-
           const isSelected = selectedTaskId === task.id;
 
           return (
@@ -107,10 +120,20 @@ const ManagmentTasks: React.FC = () => {
 
               {isSelected && (
                 <div className="actions">
-                  <button onClick={(e) => { e.stopPropagation(); handleEditClick(task); }}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEditClick(task);
+                    }}
+                  >
                     Update
                   </button>
-                  <button onClick={(e) => { e.stopPropagation(); handleDeleteClick(task.id); }}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteClick(task.id);
+                    }}
+                  >
                     Delete
                   </button>
                 </div>
@@ -120,19 +143,44 @@ const ManagmentTasks: React.FC = () => {
         })}
       </div>
 
+      {/* ✅ Edit popup */}
       {isEditing && (
         <div className="edit-popup">
           <div className="popup-content">
             <h3>Edit Task</h3>
+
+            <label>Title:</label>
             <input
               type="text"
               value={editTitle}
               onChange={(e) => setEditTitle(e.target.value)}
             />
+
+            <label>Description:</label>
             <textarea
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
             />
+
+            <label>Due Date:</label>
+            <input
+              type="date"
+              value={editDueDate}
+              onChange={(e) => setEditDueDate(e.target.value)}
+            />
+
+            <label>Priority:</label>
+            <select
+              value={editPriority}
+              onChange={(e) =>
+                setEditPriority(e.target.value as "High" | "Medium" | "Low")
+              }
+            >
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+
             <div className="popup-actions">
               <button onClick={handleUpdateSubmit}>Save</button>
               <button onClick={() => setIsEditing(false)}>Cancel</button>
